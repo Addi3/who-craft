@@ -14,16 +14,16 @@ public class SpaceTImeFabricatorBlock extends Block {
         super(settings);
     }
 
-    @Environment(EnvType.CLIENT)
-    @Override
-    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-
-        double x = pos.getX() + 0.5;
-        double y = pos.getY() + 1.1;
-        double z = pos.getZ() + 0.5;
-
-        world.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0, 0.05, 0.0);
-        world.addParticle(ParticleTypes.CLOUD, x, y, z, 0.0, 0.05, 0.0);
-        world.addParticle(ParticleTypes.SOUL_FIRE_FLAME, x, y, z, 0.0, 0.02, 0.0);
-    }
+//    @Environment(EnvType.CLIENT)
+//    @Override
+//    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
+//
+//        double x = pos.getX() + 0.5;
+//        double y = pos.getY() + 1.1;
+//        double z = pos.getZ() + 0.5;
+//
+//        world.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0, 0.05, 0.0);
+//        world.addParticle(ParticleTypes.CLOUD, x, y, z, 0.0, 0.05, 0.0);
+//        world.addParticle(ParticleTypes.SOUL_FIRE_FLAME, x, y, z, 0.0, 0.02, 0.0);
+//    }
 }

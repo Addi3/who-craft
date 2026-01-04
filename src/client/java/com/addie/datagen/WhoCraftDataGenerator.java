@@ -2,6 +2,7 @@ package com.addie.datagen;
 
 import com.addie.core.WhoCraftItemGroups;
 import com.addie.core.WhoCraftItems;
+import com.addie.core.WhoCraftedBlocks;
 import dev.amble.lib.datagen.lang.AmbleLanguageProvider;
 import dev.amble.lib.datagen.lang.LanguageType;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
@@ -37,6 +38,7 @@ public class WhoCraftDataGenerator implements DataGeneratorEntrypoint {
 
 				//ItemGroup
 			provider.addTranslation(WhoCraftItemGroups.MAIN,"Who-Craft");
+			provider.addTranslation(WhoCraftItemGroups.DECOR,"Who-Craft: Deco");
 
 			//Items
 			provider.addTranslation(WhoCraftItems.CLASSIC_GOLD_KEY,"Classic Key");
@@ -52,6 +54,9 @@ public class WhoCraftDataGenerator implements DataGeneratorEntrypoint {
 			provider.addTranslation(WhoCraftItems.YALE_NETHERITE_KEY,"Yale Key");
 
 			provider.addTranslation(WhoCraftItems.KEYCHAIN,"KeyChain");
+
+			//Blocks
+			provider.addTranslation(WhoCraftedBlocks.CIRCLE_ROUNDEL,"Roundel (Circle)");
 
 			return provider;
 		})));

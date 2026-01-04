@@ -1,13 +1,18 @@
 package com.addie;
 
 import com.addie.core.WhoCraftItems;
+import com.addie.core.WhoCraftedBlocks;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
 
 public class WhoCraftClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
+
+		// Keychain model predicates
 		ModelPredicateProviderRegistry.register(
 				WhoCraftItems.KEYCHAIN,
 				new Identifier("filled"),
@@ -16,10 +21,14 @@ public class WhoCraftClient implements ClientModInitializer {
 					if (stack.hasNbt() && stack.getNbt().contains("Items")) {
 						count = stack.getNbt().getList("Items", 10).size();
 					}
-					// Normalize 0..3 items to 0..1
 					return count / 3f;
 				}
 		);
 
+		BlockRenderLayerMapRegister();
+	}
+
+	public static void BlockRenderLayerMapRegister() {
+		BlockRenderLayerMap.INSTANCE.putBlock(WhoCraftedBlocks.CIRCLE_ROUNDEL, RenderLayer.getCutout());
 	}
 }

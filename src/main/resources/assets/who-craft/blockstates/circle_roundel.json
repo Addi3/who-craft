@@ -1,0 +1,405 @@
+{
+  "multipart": [
+
+    {
+      "when": { "north": "true", "color": "white" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel", "uvlock": true }
+    },
+    {
+      "when": { "east": "true", "color": "white" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel", "uvlock": true, "y": 90 }
+    },
+    {
+      "when": { "south": "true", "color": "white" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel", "uvlock": true, "y": 180 }
+    },
+    {
+      "when": { "west": "true", "color": "white" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel", "uvlock": true, "y": 270 }
+    },
+    {
+      "when": { "up": "true", "color": "white" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel", "uvlock": true, "x": 270 }
+    },
+    {
+      "when": { "down": "true", "color": "white" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel", "uvlock": true, "x": 90 }
+    },
+
+    {
+      "when": { "north": "true", "color": "orange" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_orange", "uvlock": true }
+    },
+    {
+      "when": { "east": "true", "color": "orange" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_orange", "uvlock": true, "y": 90 }
+    },
+    {
+      "when": { "south": "true", "color": "orange" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_orange", "uvlock": true, "y": 180 }
+    },
+    {
+      "when": { "west": "true", "color": "orange" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_orange", "uvlock": true, "y": 270 }
+    },
+    {
+      "when": { "up": "true", "color": "orange" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_orange", "uvlock": true, "x": 270 }
+    },
+    {
+      "when": { "down": "true", "color": "orange" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_orange", "uvlock": true, "x": 90 }
+    },
+
+    {
+      "when": { "north": "true", "color": "magenta" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_magenta", "uvlock": true }
+    },
+    {
+      "when": { "east": "true", "color": "magenta" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_magenta", "uvlock": true, "y": 90 }
+    },
+    {
+      "when": { "south": "true", "color": "magenta" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_magenta", "uvlock": true, "y": 180 }
+    },
+    {
+      "when": { "west": "true", "color": "magenta" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_magenta", "uvlock": true, "y": 270 }
+    },
+    {
+      "when": { "up": "true", "color": "magenta" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_magenta", "uvlock": true, "x": 270 }
+    },
+    {
+      "when": { "down": "true", "color": "magenta" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_magenta", "uvlock": true, "x": 90 }
+    },
+
+    {
+      "when": { "north": "true", "color": "light_blue" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_light_blue", "uvlock": true }
+    },
+    {
+      "when": { "east": "true", "color": "light_blue" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_light_blue", "uvlock": true, "y": 90 }
+    },
+    {
+      "when": { "south": "true", "color": "light_blue" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_light_blue", "uvlock": true, "y": 180 }
+    },
+    {
+      "when": { "west": "true", "color": "light_blue" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_light_blue", "uvlock": true, "y": 270 }
+    },
+    {
+      "when": { "up": "true", "color": "light_blue" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_light_blue", "uvlock": true, "x": 270 }
+    },
+    {
+      "when": { "down": "true", "color": "light_blue" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_light_blue", "uvlock": true, "x": 90 }
+    },
+
+    {
+      "when": { "north": "true", "color": "yellow" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_yellow", "uvlock": true }
+    },
+    {
+      "when": { "east": "true", "color": "yellow" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_yellow", "uvlock": true, "y": 90 }
+    },
+    {
+      "when": { "south": "true", "color": "yellow" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_yellow", "uvlock": true, "y": 180 }
+    },
+    {
+      "when": { "west": "true", "color": "yellow" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_yellow", "uvlock": true, "y": 270 }
+    },
+    {
+      "when": { "up": "true", "color": "yellow" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_yellow", "uvlock": true, "x": 270 }
+    },
+    {
+      "when": { "down": "true", "color": "yellow" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_yellow", "uvlock": true, "x": 90 }
+    },
+
+    {
+      "when": { "north": "true", "color": "lime" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_lime", "uvlock": true }
+    },
+    {
+      "when": { "east": "true", "color": "lime" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_lime", "uvlock": true, "y": 90 }
+    },
+    {
+      "when": { "south": "true", "color": "lime" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_lime", "uvlock": true, "y": 180 }
+    },
+    {
+      "when": { "west": "true", "color": "lime" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_lime", "uvlock": true, "y": 270 }
+    },
+    {
+      "when": { "up": "true", "color": "lime" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_lime", "uvlock": true, "x": 270 }
+    },
+    {
+      "when": { "down": "true", "color": "lime" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_lime", "uvlock": true, "x": 90 }
+    },
+
+    {
+      "when": { "north": "true", "color": "pink" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_pink", "uvlock": true }
+    },
+    {
+      "when": { "east": "true", "color": "pink" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_pink", "uvlock": true, "y": 90 }
+    },
+    {
+      "when": { "south": "true", "color": "pink" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_pink", "uvlock": true, "y": 180 }
+    },
+    {
+      "when": { "west": "true", "color": "pink" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_pink", "uvlock": true, "y": 270 }
+    },
+    {
+      "when": { "up": "true", "color": "pink" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_pink", "uvlock": true, "x": 270 }
+    },
+    {
+      "when": { "down": "true", "color": "pink" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_pink", "uvlock": true, "x": 90 }
+    },
+
+    {
+      "when": { "north": "true", "color": "gray" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_gray", "uvlock": true }
+    },
+    {
+      "when": { "east": "true", "color": "gray" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_gray", "uvlock": true, "y": 90 }
+    },
+    {
+      "when": { "south": "true", "color": "gray" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_gray", "uvlock": true, "y": 180 }
+    },
+    {
+      "when": { "west": "true", "color": "gray" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_gray", "uvlock": true, "y": 270 }
+    },
+    {
+      "when": { "up": "true", "color": "gray" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_gray", "uvlock": true, "x": 270 }
+    },
+    {
+      "when": { "down": "true", "color": "gray" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_gray", "uvlock": true, "x": 90 }
+    },
+
+    {
+      "when": { "north": "true", "color": "light_gray" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_light_gray", "uvlock": true }
+    },
+    {
+      "when": { "east": "true", "color": "light_gray" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_light_gray", "uvlock": true, "y": 90 }
+    },
+    {
+      "when": { "south": "true", "color": "light_gray" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_light_gray", "uvlock": true, "y": 180 }
+    },
+    {
+      "when": { "west": "true", "color": "light_gray" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_light_gray", "uvlock": true, "y": 270 }
+    },
+    {
+      "when": { "up": "true", "color": "light_gray" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_light_gray", "uvlock": true, "x": 270 }
+    },
+    {
+      "when": { "down": "true", "color": "light_gray" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_light_gray", "uvlock": true, "x": 90 }
+    },
+
+    {
+      "when": { "north": "true", "color": "cyan" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_cyan", "uvlock": true }
+    },
+    {
+      "when": { "east": "true", "color": "cyan" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_cyan", "uvlock": true, "y": 90 }
+    },
+    {
+      "when": { "south": "true", "color": "cyan" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_cyan", "uvlock": true, "y": 180 }
+    },
+    {
+      "when": { "west": "true", "color": "cyan" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_cyan", "uvlock": true, "y": 270 }
+    },
+    {
+      "when": { "up": "true", "color": "cyan" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_cyan", "uvlock": true, "x": 270 }
+    },
+    {
+      "when": { "down": "true", "color": "cyan" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_cyan", "uvlock": true, "x": 90 }
+    },
+
+    {
+      "when": { "north": "true", "color": "purple" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_purple", "uvlock": true }
+    },
+    {
+      "when": { "east": "true", "color": "purple" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_purple", "uvlock": true, "y": 90 }
+    },
+    {
+      "when": { "south": "true", "color": "purple" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_purple", "uvlock": true, "y": 180 }
+    },
+    {
+      "when": { "west": "true", "color": "purple" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_purple", "uvlock": true, "y": 270 }
+    },
+    {
+      "when": { "up": "true", "color": "purple" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_purple", "uvlock": true, "x": 270 }
+    },
+    {
+      "when": { "down": "true", "color": "purple" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_purple", "uvlock": true, "x": 90 }
+    },
+
+    {
+      "when": { "north": "true", "color": "blue" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_blue", "uvlock": true }
+    },
+    {
+      "when": { "east": "true", "color": "blue" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_blue", "uvlock": true, "y": 90 }
+    },
+    {
+      "when": { "south": "true", "color": "blue" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_blue", "uvlock": true, "y": 180 }
+    },
+    {
+      "when": { "west": "true", "color": "blue" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_blue", "uvlock": true, "y": 270 }
+    },
+    {
+      "when": { "up": "true", "color": "blue" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_blue", "uvlock": true, "x": 270 }
+    },
+    {
+      "when": { "down": "true", "color": "blue" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_blue", "uvlock": true, "x": 90 }
+    },
+
+    {
+      "when": { "north": "true", "color": "brown" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_brown", "uvlock": true }
+    },
+    {
+      "when": { "east": "true", "color": "brown" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_brown", "uvlock": true, "y": 90 }
+    },
+    {
+      "when": { "south": "true", "color": "brown" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_brown", "uvlock": true, "y": 180 }
+    },
+    {
+      "when": { "west": "true", "color": "brown" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_brown", "uvlock": true, "y": 270 }
+    },
+    {
+      "when": { "up": "true", "color": "brown" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_brown", "uvlock": true, "x": 270 }
+    },
+    {
+      "when": { "down": "true", "color": "brown" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_brown", "uvlock": true, "x": 90 }
+    },
+
+    {
+      "when": { "north": "true", "color": "green" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_green", "uvlock": true }
+    },
+    {
+      "when": { "east": "true", "color": "green" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_green", "uvlock": true, "y": 90 }
+    },
+    {
+      "when": { "south": "true", "color": "green" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_green", "uvlock": true, "y": 180 }
+    },
+    {
+      "when": { "west": "true", "color": "green" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_green", "uvlock": true, "y": 270 }
+    },
+    {
+      "when": { "up": "true", "color": "green" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_green", "uvlock": true, "x": 270 }
+    },
+    {
+      "when": { "down": "true", "color": "green" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_green", "uvlock": true, "x": 90 }
+    },
+
+    {
+      "when": { "north": "true", "color": "red" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_red", "uvlock": true }
+    },
+    {
+      "when": { "east": "true", "color": "red" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_red", "uvlock": true, "y": 90 }
+    },
+    {
+      "when": { "south": "true", "color": "red" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_red", "uvlock": true, "y": 180 }
+    },
+    {
+      "when": { "west": "true", "color": "red" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_red", "uvlock": true, "y": 270 }
+    },
+    {
+      "when": { "up": "true", "color": "red" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_red", "uvlock": true, "x": 270 }
+    },
+    {
+      "when": { "down": "true", "color": "red" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_red", "uvlock": true, "x": 90 }
+    },
+
+    {
+      "when": { "north": "true", "color": "black" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_black", "uvlock": true }
+    },
+    {
+      "when": { "east": "true", "color": "black" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_black", "uvlock": true, "y": 90 }
+    },
+    {
+      "when": { "south": "true", "color": "black" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_black", "uvlock": true, "y": 180 }
+    },
+    {
+      "when": { "west": "true", "color": "black" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_black", "uvlock": true, "y": 270 }
+    },
+    {
+      "when": { "up": "true", "color": "black" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_black", "uvlock": true, "x": 270 }
+    },
+    {
+      "when": { "down": "true", "color": "black" },
+      "apply": { "model": "who-craft:block/roundels/circle/circle_roundel_black", "uvlock": true, "x": 90 }
+    }
+
+  ]
+}
