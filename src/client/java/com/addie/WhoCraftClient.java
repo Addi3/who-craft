@@ -1,9 +1,12 @@
 package com.addie;
 
+import com.addie.clientscreens.SpaceTimeFabricatorScreen;
 import com.addie.core.WhoCraftItems;
 import com.addie.core.WhoCraftedBlocks;
+import com.addie.screen.WhoCraftScreens;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
@@ -25,6 +28,7 @@ public class WhoCraftClient implements ClientModInitializer {
 				}
 		);
 
+		ScreenRegistry.register(WhoCraftScreens.SPACE_TIME_FABRICATOR, SpaceTimeFabricatorScreen::new);
 		BlockRenderLayerMapRegister();
 	}
 
