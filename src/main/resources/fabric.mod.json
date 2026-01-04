@@ -22,7 +22,7 @@
 			"com.addie.WhoCraftClient"
 		],
 		"fabric-datagen": [
-			"com.addie.WhoCraftDataGenerator"
+			"com.addie.datagen.WhoCraftDataGenerator"
 		]
 	},
 	"mixins": [

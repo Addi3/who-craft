@@ -1,0 +1,6 @@
+{
+  "parent": "who-craft:item/key_generated",
+  "textures": {
+    "layer0": "who-craft:item/classic_gold_key"
+  }
+}
