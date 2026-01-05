@@ -1,1 +1,1 @@
-hi :D
+![minecraft.png](src/main/resources/resourcepacks/whocraftmenu/assets/minecraft/textures/gui/title/minecraft.png)

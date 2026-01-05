@@ -2,7 +2,8 @@ package com.addie;
 
 import com.addie.core.WhoCraftItemGroups;
 import com.addie.core.WhoCraftItems;
-import com.addie.core.WhoCraftedBlocks;
+import com.addie.core.WhoCraftBlocks;
+import com.addie.core.WhoCraftSounds;
 import com.addie.recipe.WhoCraftRecipeSerializers;
 import com.addie.recipe.WhoCraftRecipes;
 import com.addie.screen.WhoCraftScreens;
@@ -25,9 +26,10 @@ public class WhoCraft implements ModInitializer {
 
 		RegistryContainer.register(WhoCraftItems.class, MOD_ID);
 		RegistryContainer.register(WhoCraftItemGroups.class, MOD_ID);
-		RegistryContainer.register(WhoCraftedBlocks.class, MOD_ID);
+		RegistryContainer.register(WhoCraftBlocks.class, MOD_ID);
 		WhoCraftScreens.init();
 		WhoCraftRecipes.init();
 		WhoCraftRecipeSerializers.init();
+		WhoCraftSounds.init();
 	}
 }

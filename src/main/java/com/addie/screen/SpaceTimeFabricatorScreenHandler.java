@@ -1,6 +1,6 @@
 package com.addie.screen;
 
-import com.addie.core.WhoCraftedBlocks;
+import com.addie.core.WhoCraftBlocks;
 import com.addie.recipe.FabricationRecipe;
 import com.addie.recipe.WhoCraftRecipes;
 import net.minecraft.entity.player.PlayerEntity;
@@ -78,7 +78,7 @@ public class SpaceTimeFabricatorScreenHandler extends ScreenHandler {
                 context.run((world, pos) -> {
                     long l = world.getTime();
                     if (SpaceTimeFabricatorScreenHandler.this.lastTakeTime != l) {
-                        world.playSound(null, pos, SoundEvents.UI_STONECUTTER_TAKE_RESULT, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                        world.playSound(null, pos, SoundEvents.BLOCK_BEACON_POWER_SELECT, SoundCategory.BLOCKS, 1.0F, 1.0F);
                         SpaceTimeFabricatorScreenHandler.this.lastTakeTime = l;
                     }
                 });
@@ -121,7 +121,7 @@ public class SpaceTimeFabricatorScreenHandler extends ScreenHandler {
 
     @Override
     public boolean canUse(PlayerEntity player) {
-        return canUse(this.context, player, WhoCraftedBlocks.SPACE_TIME_FABRICATOR);
+        return canUse(this.context, player, WhoCraftBlocks.SPACE_TIME_FABRICATOR);
     }
 
     @Override

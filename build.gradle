@@ -3,7 +3,7 @@ plugins {
 	id 'maven-publish'
 }
 
-version = project.mod_version
+version = "${mod_version}${mod_version_qualifier ? "-" + mod_version_qualifier : ""}"
 group = project.maven_group
 
 base {

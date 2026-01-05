@@ -1,0 +1,11 @@
+{
+  "music.menu": {
+    "replace": true,
+    "sounds": [
+      {
+        "name": "who-craft:main_theme",
+        "stream": true
+      }
+    ]
+  }
+}

@@ -11,13 +11,13 @@ import net.minecraft.block.Block;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.sound.BlockSoundGroup;
 
-public class WhoCraftedBlocks extends BlockContainer {
+public class WhoCraftBlocks extends BlockContainer {
 
     @NoEnglish
     @PickaxeMineable(tool = PickaxeMineable.Tool.IRON)
     public static final Block SPACE_TIME_FABRICATOR = new SpaceTimeFabricatorBlock(ABlockSettings.create()
             .itemSettings(new AItemSettings().group(WhoCraftItemGroups.MAIN)).requiresTool()
-            .strength(0.5F, 1.0F).pistonBehavior(PistonBehavior.IGNORE).sounds(BlockSoundGroup.COPPER).luminance(9).lightLevel(9));
+            .strength(0.5F, 1.0F).pistonBehavior(PistonBehavior.IGNORE).sounds(BlockSoundGroup.COPPER));
 
     // Roundels
     @NoEnglish

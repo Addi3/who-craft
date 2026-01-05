@@ -16,7 +16,7 @@ public class WhoCraftItemGroups implements ItemGroupContainer {
 
     // Decor
     public static final AItemGroup DECOR = AItemGroup.builder(WhoCraft.id("item_group_decor"))
-            .icon(() -> new ItemStack(WhoCraftedBlocks.CIRCLE_ROUNDEL))
+            .icon(() -> new ItemStack(WhoCraftBlocks.CIRCLE_ROUNDEL))
             .entries((displayContext, entries) -> {
             })
             .build();

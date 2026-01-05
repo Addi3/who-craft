@@ -4,7 +4,7 @@
 	"texture_size": [64, 64],
 	"textures": {
 		"0": "who-craft:block/space_time_fabricator",
-		"particle": "who-craft:block/space_time_fabricator"
+		"particle": "minecraft:block/deepslate"
 	},
 	"elements": [
 		{

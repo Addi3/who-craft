@@ -2,10 +2,11 @@ package com.addie.datagen;
 
 import com.addie.core.WhoCraftItemGroups;
 import com.addie.core.WhoCraftItems;
-import com.addie.core.WhoCraftedBlocks;
+import com.addie.core.WhoCraftBlocks;
 import dev.amble.lib.datagen.lang.AmbleLanguageProvider;
 import dev.amble.lib.datagen.lang.LanguageType;
 import dev.amble.lib.datagen.loot.AmbleBlockLootTable;
+import dev.amble.lib.datagen.sound.AmbleSoundProvider;
 import dev.amble.lib.datagen.tag.AmbleBlockTagProvider;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
@@ -19,16 +20,20 @@ public class WhoCraftDataGenerator implements DataGeneratorEntrypoint {
 		genLang(pack);
 		genLoot(pack);
 		genTags(pack);
+		generateSoundData(pack);
 		//generateRecipes(pack);
-		//pack.addProvider(this::addSounds);
+	}
+
+	public void generateSoundData(FabricDataGenerator.Pack pack) {
+		pack.addProvider((((output, registriesFuture) -> new AmbleSoundProvider(output))));
 	}
 
 	private void genTags(FabricDataGenerator.Pack pack) {
-		pack.addProvider((((output, registriesFuture) -> new AmbleBlockTagProvider(output, registriesFuture).withBlocks(WhoCraftedBlocks.class))));
+		pack.addProvider((((output, registriesFuture) -> new AmbleBlockTagProvider(output, registriesFuture).withBlocks(WhoCraftBlocks.class))));
 	}
 
 	private void genLoot(FabricDataGenerator.Pack pack) {
-		pack.addProvider((((output, registriesFuture) -> new AmbleBlockLootTable(output).withBlocks(WhoCraftedBlocks.class))));
+		pack.addProvider((((output, registriesFuture) -> new AmbleBlockLootTable(output).withBlocks(WhoCraftBlocks.class))));
 	}
 
 	private void genLang(FabricDataGenerator.Pack pack) {
@@ -41,6 +46,7 @@ public class WhoCraftDataGenerator implements DataGeneratorEntrypoint {
 
 			//Misc
 			provider.addTranslation("whocraft.container.spacetimefabricator","Fabrication");
+			provider.addTranslation("text.whocraft.betatext","CAUTION: This is a BETA version of WhoCraft!");
 				//Tooltips
 			provider.addTranslation("item.whocraft.key.type","Type:");
 			provider.addTranslation("item.whocraft.key.gold","Gold");
@@ -68,8 +74,8 @@ public class WhoCraftDataGenerator implements DataGeneratorEntrypoint {
 			provider.addTranslation(WhoCraftItems.KEYCHAIN,"KeyChain");
 
 			//Blocks
-			provider.addTranslation(WhoCraftedBlocks.SPACE_TIME_FABRICATOR,"Space-Time Fabricator");
-			provider.addTranslation(WhoCraftedBlocks.CIRCLE_ROUNDEL,"Roundel (Circle)");
+			provider.addTranslation(WhoCraftBlocks.SPACE_TIME_FABRICATOR,"Space-Time Fabricator");
+			provider.addTranslation(WhoCraftBlocks.CIRCLE_ROUNDEL,"Roundel (Circle)");
 
 			return provider;
 		})));

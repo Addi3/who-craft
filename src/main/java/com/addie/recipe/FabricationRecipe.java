@@ -1,7 +1,7 @@
 package com.addie.recipe;
 
 
-import com.addie.core.WhoCraftedBlocks;
+import com.addie.core.WhoCraftBlocks;
 import com.google.gson.JsonObject;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
@@ -111,6 +111,6 @@ public class FabricationRecipe implements Recipe<Inventory> {
 
     @Override
     public ItemStack createIcon() {
-        return new ItemStack(WhoCraftedBlocks.SPACE_TIME_FABRICATOR);
+        return new ItemStack(WhoCraftBlocks.SPACE_TIME_FABRICATOR);
     }
 }
