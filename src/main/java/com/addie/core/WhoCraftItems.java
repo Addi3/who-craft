@@ -5,6 +5,8 @@ import com.addie.core.items.IronKeyItem;
 import com.addie.core.items.KeyChainItem;
 import com.addie.core.items.NetheriteKeyItem;
 import dev.amble.lib.container.impl.ItemContainer;
+import dev.amble.lib.datagen.util.AutomaticModel;
+import dev.amble.lib.datagen.util.NoBlockDrop;
 import dev.amble.lib.datagen.util.NoEnglish;
 import dev.amble.lib.item.AItemSettings;
 import net.minecraft.item.Item;
@@ -15,37 +17,64 @@ public class WhoCraftItems extends ItemContainer {
 
         //Classic
     @NoEnglish
+    @AutomaticModel
     public static final Item CLASSIC_GOLD_KEY = new GoldKeyItem(new AItemSettings().group(WhoCraftItemGroups.MAIN).maxCount(1));
 
     @NoEnglish
+    @AutomaticModel
     public static final Item CLASSIC_IRON_KEY = new IronKeyItem(new AItemSettings().group(WhoCraftItemGroups.MAIN).maxCount(1));
 
     @NoEnglish
+    @AutomaticModel
     public static final Item CLASSIC_NETHERITE_KEY = new NetheriteKeyItem(new AItemSettings().group(WhoCraftItemGroups.MAIN).maxCount(1));
 
         //Gallifreyan
     @NoEnglish
+    @AutomaticModel
     public static final Item GALLIFREYAN_GOLD_KEY = new GoldKeyItem(new AItemSettings().group(WhoCraftItemGroups.MAIN).maxCount(1));
 
     @NoEnglish
+    @AutomaticModel
     public static final Item GALLIFREYAN_IRON_KEY = new IronKeyItem(new AItemSettings().group(WhoCraftItemGroups.MAIN).maxCount(1));
 
     @NoEnglish
+    @AutomaticModel
     public static final Item GALLIFREYAN_NETHERITE_KEY = new NetheriteKeyItem(new AItemSettings().group(WhoCraftItemGroups.MAIN).maxCount(1));
 
         //Yale
     @NoEnglish
+    @AutomaticModel
     public static final Item YALE_GOLD_KEY = new GoldKeyItem(new AItemSettings().group(WhoCraftItemGroups.MAIN).maxCount(1));
 
     @NoEnglish
+    @AutomaticModel
     public static final Item YALE_IRON_KEY = new IronKeyItem(new AItemSettings().group(WhoCraftItemGroups.MAIN).maxCount(1));
 
     @NoEnglish
+    @AutomaticModel
     public static final Item YALE_NETHERITE_KEY = new NetheriteKeyItem(new AItemSettings().group(WhoCraftItemGroups.MAIN).maxCount(1));
 
         //Keychain
 
     @NoEnglish
     public static final Item KEYCHAIN = new KeyChainItem(new AItemSettings().group(WhoCraftItemGroups.MAIN).maxCount(1));
+
+    // Other
+
+    @NoEnglish
+    @AutomaticModel
+    public static final Item BLUEPRINT = new Item(new AItemSettings().group(WhoCraftItemGroups.MAIN));
+
+    @NoEnglish
+    @AutomaticModel
+    public static final Item CIRCUIT = new Item(new AItemSettings().group(WhoCraftItemGroups.MAIN));
+
+    @NoEnglish
+    @AutomaticModel
+    public static final Item ROUNDEL_MOULD = new Item(new AItemSettings().group(WhoCraftItemGroups.MAIN));
+
+    @NoEnglish
+    @AutomaticModel
+    public static final Item ROUNDEL_PATTERN = new Item(new AItemSettings().group(WhoCraftItemGroups.MAIN));
 
 }

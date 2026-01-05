@@ -1,6 +1,0 @@
-{
-  "parent": "who-craft:item/key_generated",
-  "textures": {
-    "layer0": "who-craft:item/yale_netherite_key"
-  }
-}

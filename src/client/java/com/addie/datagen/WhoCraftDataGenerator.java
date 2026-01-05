@@ -5,6 +5,7 @@ import com.addie.core.WhoCraftItems;
 import com.addie.core.WhoCraftBlocks;
 import com.addie.datagen.providers.WhoCraftAchievementProvider;
 import com.addie.datagen.providers.WhoCraftItemTagProvider;
+import com.addie.datagen.providers.WhoCraftModelGen;
 import com.lib.datagenproviders.CallistoLibRecipeProvider;
 import dev.amble.lib.datagen.lang.AmbleLanguageProvider;
 import dev.amble.lib.datagen.lang.LanguageType;
@@ -34,6 +35,17 @@ public class WhoCraftDataGenerator implements DataGeneratorEntrypoint {
 		generateSoundData(pack);
 		generateRecipes(pack);
 		generateItemTags(pack);
+		genModels(pack);
+	}
+
+	private void genModels(FabricDataGenerator.Pack pack) {
+		pack.addProvider(((output, registriesFuture) -> {
+			WhoCraftModelGen provider = new WhoCraftModelGen(output);
+			provider.withBlocks(WhoCraftBlocks.class);
+			provider.withItems(WhoCraftItems.class);
+			return provider;
+		}));
+
 	}
 
 	private void generateachivement(FabricDataGenerator.Pack pack) {
@@ -126,9 +138,15 @@ public class WhoCraftDataGenerator implements DataGeneratorEntrypoint {
 
 			provider.addTranslation(WhoCraftItems.KEYCHAIN,"KeyChain");
 
+			provider.addTranslation(WhoCraftItems.BLUEPRINT,"Blueprint");
+			provider.addTranslation(WhoCraftItems.CIRCUIT,"Circuit");
+			provider.addTranslation(WhoCraftItems.ROUNDEL_MOULD,"Roundel Mould");
+			provider.addTranslation(WhoCraftItems.ROUNDEL_PATTERN,"Roundel Pattern");
+
 			//Blocks
 			provider.addTranslation(WhoCraftBlocks.SPACE_TIME_FABRICATOR,"Space-Time Fabricator");
 			provider.addTranslation(WhoCraftBlocks.CIRCLE_ROUNDEL,"Roundel (Circle)");
+			provider.addTranslation(WhoCraftBlocks.CIRCLE_ROUNDEL_ALT,"Roundel (Circle Alt)");
 
 			//Achievements
 			provider.addTranslation("achievement.whocraft.title.root","Who-Craft");
