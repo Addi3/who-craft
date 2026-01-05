@@ -20,7 +20,6 @@ public class WhoCraftedBlocks extends BlockContainer {
             .strength(0.5F, 1.0F).pistonBehavior(PistonBehavior.IGNORE).sounds(BlockSoundGroup.COPPER).luminance(9).lightLevel(9));
 
     // Roundels
-
     @NoEnglish
     @PickaxeMineable(tool = PickaxeMineable.Tool.IRON)
     public static final Block CIRCLE_ROUNDEL = new RoundelBlock(ABlockSettings.create()

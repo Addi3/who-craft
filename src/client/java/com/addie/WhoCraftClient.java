@@ -34,5 +34,6 @@ public class WhoCraftClient implements ClientModInitializer {
 
 	public static void BlockRenderLayerMapRegister() {
 		BlockRenderLayerMap.INSTANCE.putBlock(WhoCraftedBlocks.CIRCLE_ROUNDEL, RenderLayer.getCutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(WhoCraftedBlocks.SPACE_TIME_FABRICATOR, RenderLayer.getCutout());
 	}
 }

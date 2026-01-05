@@ -1,16 +1,24 @@
 package com.addie.core.blocks;
 
 import net.minecraft.block.BlockState;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.DyeItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.property.EnumProperty;
+import net.minecraft.text.Style;
+import net.minecraft.text.Text;
+import net.minecraft.text.TextColor;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.entity.player.PlayerEntity;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class RoundelBlock extends MultifaceBlock {
 
@@ -38,6 +46,7 @@ public class RoundelBlock extends MultifaceBlock {
         builder.add(COLOR);
     }
 
+
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player,
                               Hand hand, BlockHitResult hit) {
@@ -58,5 +67,14 @@ public class RoundelBlock extends MultifaceBlock {
         }
 
         return ActionResult.PASS;
+    }
+
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
+
+        tooltip.add(Text.translatable("block.roundel.description")
+                .setStyle(Style.EMPTY.withColor(TextColor.fromRgb(0xe9b115))));
+
     }
 }

@@ -13,6 +13,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -23,6 +24,9 @@ public class SpaceTimeFabricatorBlock extends Block {
     public SpaceTimeFabricatorBlock(AbstractBlock.Settings settings) {
         super(settings);
     }
+
+    protected static final VoxelShape SHAPE =
+            Block.createCuboidShape(2, 0, 2, 14, 16, 14);
 
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (world.isClient) {
@@ -52,19 +56,22 @@ public class SpaceTimeFabricatorBlock extends Block {
     public boolean canPathfindThrough(BlockState state, BlockView world, BlockPos pos, NavigationType type) {
         return false;
     }
+
+    @Override
+    public boolean isShapeFullCube(BlockState state, BlockView world, BlockPos pos) {
+        return false;
+    }
+
+    @Override
+    public VoxelShape getCollisionShape(BlockState state, BlockView world,
+                                        BlockPos pos, ShapeContext context) {
+        return SHAPE;
+    }
+
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView world,
+                                      BlockPos pos, ShapeContext context) {
+        return SHAPE;
+    }
 }
-
-
-//    @Environment(EnvType.CLIENT)
-//    @Override
-//    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-//
-//        double x = pos.getX() + 0.5;
-//        double y = pos.getY() + 1.1;
-//        double z = pos.getZ() + 0.5;
-//
-//        world.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0, 0.05, 0.0);
-//        world.addParticle(ParticleTypes.CLOUD, x, y, z, 0.0, 0.05, 0.0);
-//        world.addParticle(ParticleTypes.SOUL_FIRE_FLAME, x, y, z, 0.0, 0.02, 0.0);
-//    }
 

@@ -5,6 +5,8 @@ import com.addie.core.WhoCraftItems;
 import com.addie.core.WhoCraftedBlocks;
 import dev.amble.lib.datagen.lang.AmbleLanguageProvider;
 import dev.amble.lib.datagen.lang.LanguageType;
+import dev.amble.lib.datagen.loot.AmbleBlockLootTable;
+import dev.amble.lib.datagen.tag.AmbleBlockTagProvider;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 
@@ -15,10 +17,18 @@ public class WhoCraftDataGenerator implements DataGeneratorEntrypoint {
 
 		//generateachivement(pack);
 		genLang(pack);
-		//genLoot(pack);
-		//genTags(pack);
+		genLoot(pack);
+		genTags(pack);
 		//generateRecipes(pack);
 		//pack.addProvider(this::addSounds);
+	}
+
+	private void genTags(FabricDataGenerator.Pack pack) {
+		pack.addProvider((((output, registriesFuture) -> new AmbleBlockTagProvider(output, registriesFuture).withBlocks(WhoCraftedBlocks.class))));
+	}
+
+	private void genLoot(FabricDataGenerator.Pack pack) {
+		pack.addProvider((((output, registriesFuture) -> new AmbleBlockLootTable(output).withBlocks(WhoCraftedBlocks.class))));
 	}
 
 	private void genLang(FabricDataGenerator.Pack pack) {
@@ -30,11 +40,13 @@ public class WhoCraftDataGenerator implements DataGeneratorEntrypoint {
 			AmbleLanguageProvider provider = new AmbleLanguageProvider(output, LanguageType.EN_US);
 
 			//Misc
+			provider.addTranslation("whocraft.container.spacetimefabricator","Fabrication");
 				//Tooltips
 			provider.addTranslation("item.whocraft.key.type","Type:");
 			provider.addTranslation("item.whocraft.key.gold","Gold");
 			provider.addTranslation("item.whocraft.key.iron","Iron");
 			provider.addTranslation("item.whocraft.key.netherite","Netherite");
+			provider.addTranslation("block.roundel.description","Can Be Dyed!");
 
 				//ItemGroup
 			provider.addTranslation(WhoCraftItemGroups.MAIN,"Who-Craft");
@@ -56,6 +68,7 @@ public class WhoCraftDataGenerator implements DataGeneratorEntrypoint {
 			provider.addTranslation(WhoCraftItems.KEYCHAIN,"KeyChain");
 
 			//Blocks
+			provider.addTranslation(WhoCraftedBlocks.SPACE_TIME_FABRICATOR,"Space-Time Fabricator");
 			provider.addTranslation(WhoCraftedBlocks.CIRCLE_ROUNDEL,"Roundel (Circle)");
 
 			return provider;
