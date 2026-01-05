@@ -78,8 +78,8 @@ public class FabricationRecipe implements Recipe<Inventory> {
 
         public FabricationRecipe read(Identifier identifier, JsonObject jsonObject) {
             String string = JsonHelper.getString(jsonObject, "group", "");
-            Ingredient ingredient = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "base"), false);
-            Ingredient ingredient1 = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "addition"), false);
+            Ingredient ingredient = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "top"), false);
+            Ingredient ingredient1 = Ingredient.fromJson(JsonHelper.getObject(jsonObject, "bottom"), false);
 
 
             String string2 = JsonHelper.getString(jsonObject, "result");

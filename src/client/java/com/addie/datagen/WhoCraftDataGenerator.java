@@ -3,6 +3,9 @@ package com.addie.datagen;
 import com.addie.core.WhoCraftItemGroups;
 import com.addie.core.WhoCraftItems;
 import com.addie.core.WhoCraftBlocks;
+import com.addie.datagen.providers.WhoCraftAchievementProvider;
+import com.addie.datagen.providers.WhoCraftItemTagProvider;
+import com.lib.datagenproviders.CallistoLibRecipeProvider;
 import dev.amble.lib.datagen.lang.AmbleLanguageProvider;
 import dev.amble.lib.datagen.lang.LanguageType;
 import dev.amble.lib.datagen.loot.AmbleBlockLootTable;
@@ -10,18 +13,31 @@ import dev.amble.lib.datagen.sound.AmbleSoundProvider;
 import dev.amble.lib.datagen.tag.AmbleBlockTagProvider;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.minecraft.block.Blocks;
+import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.item.Items;
+import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.tag.ItemTags;
+
+import static net.minecraft.data.server.recipe.RecipeProvider.conditionsFromItem;
+import static net.minecraft.data.server.recipe.RecipeProvider.hasItem;
 
 public class WhoCraftDataGenerator implements DataGeneratorEntrypoint {
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator gen) {
 		FabricDataGenerator.Pack pack = gen.createPack();
 
-		//generateachivement(pack);
+		generateachivement(pack);
 		genLang(pack);
 		genLoot(pack);
 		genTags(pack);
 		generateSoundData(pack);
-		//generateRecipes(pack);
+		generateRecipes(pack);
+		generateItemTags(pack);
+	}
+
+	private void generateachivement(FabricDataGenerator.Pack pack) {
+		pack.addProvider(WhoCraftAchievementProvider::new);
 	}
 
 	public void generateSoundData(FabricDataGenerator.Pack pack) {
@@ -31,9 +47,46 @@ public class WhoCraftDataGenerator implements DataGeneratorEntrypoint {
 	private void genTags(FabricDataGenerator.Pack pack) {
 		pack.addProvider((((output, registriesFuture) -> new AmbleBlockTagProvider(output, registriesFuture).withBlocks(WhoCraftBlocks.class))));
 	}
+	public void generateItemTags(FabricDataGenerator.Pack pack) {
+		pack.addProvider(WhoCraftItemTagProvider::new);
+	}
 
 	private void genLoot(FabricDataGenerator.Pack pack) {
 		pack.addProvider((((output, registriesFuture) -> new AmbleBlockLootTable(output).withBlocks(WhoCraftBlocks.class))));
+	}
+
+	public void generateRecipes(FabricDataGenerator.Pack pack) {
+		pack.addProvider((((output, registriesFuture) -> {
+			CallistoLibRecipeProvider provider = new CallistoLibRecipeProvider(output);
+
+			// Blocks
+			;provider.addShapedRecipe(ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, WhoCraftBlocks.SPACE_TIME_FABRICATOR, 1)
+					.pattern("DCD")
+					.pattern("GDG")
+					.input('G', Items.GOLD_INGOT)
+					.input('C', Blocks.CRAFTING_TABLE)
+					.input('D', Blocks.COBBLED_DEEPSLATE)
+					.criterion(hasItem(Items.GOLD_INGOT), conditionsFromItem(Items.GOLD_INGOT))
+					.criterion(hasItem(Blocks.COBBLED_DEEPSLATE), conditionsFromItem(Blocks.COBBLED_DEEPSLATE))
+					.criterion(hasItem(Blocks.CRAFTING_TABLE), conditionsFromItem(Blocks.CRAFTING_TABLE)));
+
+			// Items
+			;provider.addShapedRecipe(ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, WhoCraftItems.CLASSIC_IRON_KEY, 1)
+					.pattern(" IE")
+					.pattern("IN ")
+					.pattern("IN ")
+					.input('I', Items.IRON_INGOT)
+					.input('N', Items.IRON_NUGGET)
+					.input('E', Items.ENDER_EYE)
+					.criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
+					.criterion(hasItem(Items.IRON_NUGGET), conditionsFromItem(Items.IRON_NUGGET))
+					.criterion(hasItem(Items.ENDER_EYE), conditionsFromItem(Items.ENDER_EYE)));
+
+
+
+			return provider;
+
+		})));
 	}
 
 	private void genLang(FabricDataGenerator.Pack pack) {
@@ -76,6 +129,19 @@ public class WhoCraftDataGenerator implements DataGeneratorEntrypoint {
 			//Blocks
 			provider.addTranslation(WhoCraftBlocks.SPACE_TIME_FABRICATOR,"Space-Time Fabricator");
 			provider.addTranslation(WhoCraftBlocks.CIRCLE_ROUNDEL,"Roundel (Circle)");
+
+			//Achievements
+			provider.addTranslation("achievement.whocraft.title.root","Who-Craft");
+			provider.addTranslation("achievement.whocraft.description.root","A journey through space and time!");
+
+			provider.addTranslation("achievement.whocraft.title.obtain_fabricator_block","Fabrication");
+			provider.addTranslation("achievement.whocraft.description.obtain_fabricator_block","Craft a Space Time Fabricator");
+
+			provider.addTranslation("achievement.whocraft.title.obtain_key","Key To Time");
+			provider.addTranslation("achievement.whocraft.description.obtain_key","Craft a TARDIS Key");
+
+			provider.addTranslation("achievement.whocraft.title.collect_all_keys","Collect them all!");
+			provider.addTranslation("achievement.whocraft.description.collect_all_keys","Obtail all Key variants");
 
 			return provider;
 		})));

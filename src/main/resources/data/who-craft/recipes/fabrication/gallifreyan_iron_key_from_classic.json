@@ -1,0 +1,11 @@
+{
+  "type": "who-craft:fabrication",
+  "top": {
+    "item": "who-craft:classic_iron_key"
+  },
+  "bottom": {
+    "item": "minecraft:iron_nugget"
+  },
+  "result": "who-craft:gallifreyan_iron_key",
+  "count": 1
+}

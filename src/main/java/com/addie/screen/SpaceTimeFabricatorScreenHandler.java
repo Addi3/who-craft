@@ -26,18 +26,22 @@ public class SpaceTimeFabricatorScreenHandler extends ScreenHandler {
     private static final int INVENTORY_END = 29;
     private static final int OUTPUT_START = 29;
     private static final int OUTPUT_END = 38;
+
     private final ScreenHandlerContext context;
     private final Property selectedRecipe = Property.create();
     private final World world;
+
     private List<FabricationRecipe> availableRecipes = new ArrayList<>();
     private ItemStack inputStack = ItemStack.EMPTY;
     private ItemStack inputStack1 = ItemStack.EMPTY;
-    long lastTakeTime;
+    private long lastTakeTime;
+
     final Slot inputSlot;
     final Slot inputSlot1;
     final Slot outputSlot;
 
     Runnable contentsChangedListener = () -> {};
+
     public final Inventory input = new SimpleInventory(2) {
         @Override
         public void markDirty() {
@@ -57,8 +61,10 @@ public class SpaceTimeFabricatorScreenHandler extends ScreenHandler {
         super(WhoCraftScreens.SPACE_TIME_FABRICATOR, syncId);
         this.context = context;
         this.world = playerInventory.player.getWorld();
+
         this.inputSlot = this.addSlot(new Slot(this.input, 0, 20, 16));
         this.inputSlot1 = this.addSlot(new Slot(this.input, 1, 20, 52));
+
         this.outputSlot = this.addSlot(new Slot(this.output, 2, 143, 33) {
             @Override
             public boolean canInsert(ItemStack stack) {
@@ -68,25 +74,28 @@ public class SpaceTimeFabricatorScreenHandler extends ScreenHandler {
             @Override
             public void onTakeItem(PlayerEntity player, ItemStack stack) {
                 stack.onCraft(player.getWorld(), player, stack.getCount());
-                SpaceTimeFabricatorScreenHandler.this.output.unlockLastRecipe(player, this.getInputStacks());
-                ItemStack itemStack = SpaceTimeFabricatorScreenHandler.this.inputSlot.takeStack(1);
-                ItemStack itemStack1 = SpaceTimeFabricatorScreenHandler.this.inputSlot1.takeStack(1);
-                if (!itemStack.isEmpty() && !itemStack1.isEmpty()) {
-                    SpaceTimeFabricatorScreenHandler.this.populateResult();
-                }
+                SpaceTimeFabricatorScreenHandler.this.output.unlockLastRecipe(player, getInputStacks());
+
+                SpaceTimeFabricatorScreenHandler.this.inputSlot.takeStack(1);
+                SpaceTimeFabricatorScreenHandler.this.inputSlot1.takeStack(1);
+                SpaceTimeFabricatorScreenHandler.this.populateResult();
 
                 context.run((world, pos) -> {
-                    long l = world.getTime();
-                    if (SpaceTimeFabricatorScreenHandler.this.lastTakeTime != l) {
+                    long time = world.getTime();
+                    if (SpaceTimeFabricatorScreenHandler.this.lastTakeTime != time) {
                         world.playSound(null, pos, SoundEvents.BLOCK_BEACON_POWER_SELECT, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                        SpaceTimeFabricatorScreenHandler.this.lastTakeTime = l;
+                        SpaceTimeFabricatorScreenHandler.this.lastTakeTime = time;
                     }
                 });
+
                 super.onTakeItem(player, stack);
             }
 
             private List<ItemStack> getInputStacks() {
-                return List.of(SpaceTimeFabricatorScreenHandler.this.inputSlot.getStack(), SpaceTimeFabricatorScreenHandler.this.inputSlot1.getStack());
+                return List.of(
+                        SpaceTimeFabricatorScreenHandler.this.inputSlot.getStack(),
+                        SpaceTimeFabricatorScreenHandler.this.inputSlot1.getStack()
+                );
             }
         });
 
@@ -116,7 +125,7 @@ public class SpaceTimeFabricatorScreenHandler extends ScreenHandler {
     }
 
     public boolean canCraft() {
-        return this.inputSlot.hasStack() && !this.availableRecipes.isEmpty();
+        return !this.availableRecipes.isEmpty();
     }
 
     @Override
@@ -126,46 +135,49 @@ public class SpaceTimeFabricatorScreenHandler extends ScreenHandler {
 
     @Override
     public boolean onButtonClick(PlayerEntity player, int id) {
-        if (this.isInBounds(id)) {
+        if (id >= 0 && id < this.availableRecipes.size()) {
             this.selectedRecipe.set(id);
             this.populateResult();
         }
-
         return true;
-    }
-
-    private boolean isInBounds(int id) {
-        return id >= 0 && id < this.availableRecipes.size();
     }
 
     @Override
     public void onContentChanged(Inventory inventory) {
-        ItemStack itemStack = this.inputSlot.getStack();
-        ItemStack itemStack1 = this.inputSlot1.getStack();
-        if (!itemStack.isOf(this.inputStack.getItem()) && !itemStack1.isOf(this.inputStack1.getItem())) {
-            this.inputStack = itemStack.copy();
-            this.inputStack1 = itemStack1.copy();
-            this.updateInput(inventory, itemStack, itemStack1);
+        ItemStack stack0 = this.inputSlot.getStack();
+        ItemStack stack1 = this.inputSlot1.getStack();
+
+        if (!ItemStack.areEqual(stack0, this.inputStack)
+                || !ItemStack.areEqual(stack1, this.inputStack1)) {
+
+            this.inputStack = stack0.copy();
+            this.inputStack1 = stack1.copy();
+            this.updateInput(inventory, stack0, stack1);
         }
     }
 
-    private void updateInput(Inventory input, ItemStack stack, ItemStack stack1) {
+    private void updateInput(Inventory inventory, ItemStack stack0, ItemStack stack1) {
         this.availableRecipes.clear();
         this.selectedRecipe.set(-1);
         this.outputSlot.setStackNoCallbacks(ItemStack.EMPTY);
-        if (!stack.isEmpty() && !stack1.isEmpty()) {
-            //System.out.println(this.world.getRecipeManager().listAllOfType(WhoCraftRecipes.FABRICATION));
-            this.availableRecipes = this.world.getRecipeManager().getAllMatches(WhoCraftRecipes.FABRICATION, input, this.world);
+
+        if (!stack0.isEmpty() || !stack1.isEmpty()) {
+            this.availableRecipes = this.world
+                    .getRecipeManager()
+                    .getAllMatches(WhoCraftRecipes.FABRICATION, inventory, this.world);
         }
+
+        this.sendContentUpdates();
     }
 
     void populateResult() {
-        if (!this.availableRecipes.isEmpty() && this.isInBounds(this.selectedRecipe.get())) {
-            FabricationRecipe fabricationRecipe = this.availableRecipes.get(this.selectedRecipe.get());
-            ItemStack itemStack = fabricationRecipe.craft(this.input, this.world.getRegistryManager());
-            if (itemStack.isItemEnabled(this.world.getEnabledFeatures())) {
-                this.output.setLastRecipe(fabricationRecipe);
-                this.outputSlot.setStackNoCallbacks(itemStack);
+        if (!this.availableRecipes.isEmpty() && this.selectedRecipe.get() >= 0 && this.selectedRecipe.get() < this.availableRecipes.size()) {
+            FabricationRecipe recipe = this.availableRecipes.get(this.selectedRecipe.get());
+            ItemStack result = recipe.craft(this.input, this.world.getRegistryManager());
+
+            if (result.isItemEnabled(this.world.getEnabledFeatures())) {
+                this.output.setLastRecipe(recipe);
+                this.outputSlot.setStackNoCallbacks(result);
             } else {
                 this.outputSlot.setStackNoCallbacks(ItemStack.EMPTY);
             }
@@ -191,50 +203,52 @@ public class SpaceTimeFabricatorScreenHandler extends ScreenHandler {
     }
 
     @Override
-    public ItemStack quickMove(PlayerEntity player, int slot) {
-        ItemStack itemStack = ItemStack.EMPTY;
-        Slot slot2 = this.slots.get(slot);
-        if (slot2 != null && slot2.hasStack()) {
-            ItemStack itemStack2 = slot2.getStack();
-            Item item = itemStack2.getItem();
-            itemStack = itemStack2.copy();
-            if (slot == 1) {
-                item.onCraft(itemStack2, player.getWorld(), player);
-                if (!this.insertItem(itemStack2, 2, 38, true)) {
-                    return ItemStack.EMPTY;
-                }
+    public ItemStack quickMove(PlayerEntity player, int slotIndex) {
+        ItemStack result = ItemStack.EMPTY;
+        Slot slot = this.slots.get(slotIndex);
 
-                slot2.onQuickTransfer(itemStack2, itemStack);
-            } else if (slot == 0) {
-                if (!this.insertItem(itemStack2, 2, 38, false)) {
+        if (slot != null && slot.hasStack()) {
+            ItemStack stack = slot.getStack();
+            result = stack.copy();
+            Item item = stack.getItem();
+
+            if (slotIndex == OUTPUT_ID) {
+                item.onCraft(stack, player.getWorld(), player);
+                if (!this.insertItem(stack, INVENTORY_START, OUTPUT_END, true)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (this.world.getRecipeManager().getFirstMatch(WhoCraftRecipes.FABRICATION, new SimpleInventory(itemStack2), this.world).isPresent()) {
-                if (!this.insertItem(itemStack2, 0, 1, false)) {
+                slot.onQuickTransfer(stack, result);
+            } else if (slotIndex == INPUT_ID || slotIndex == INPUT_ID + 1) {
+                if (!this.insertItem(stack, INVENTORY_START, OUTPUT_END, false)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (slot >= 2 && slot < 29) {
-                if (!this.insertItem(itemStack2, 29, 38, false)) {
+            } else if (this.world.getRecipeManager()
+                    .getFirstMatch(WhoCraftRecipes.FABRICATION, new SimpleInventory(stack), this.world)
+                    .isPresent()) {
+
+                if (!this.insertItem(stack, INPUT_ID, INPUT_ID + 2, false)) {
                     return ItemStack.EMPTY;
                 }
-            } else if (slot >= 29 && slot < 38 && !this.insertItem(itemStack2, 2, 29, false)) {
-                return ItemStack.EMPTY;
+            } else if (slotIndex >= INVENTORY_START && slotIndex < INVENTORY_END) {
+                if (!this.insertItem(stack, OUTPUT_START, OUTPUT_END, false)) {
+                    return ItemStack.EMPTY;
+                }
+            } else if (slotIndex >= OUTPUT_START && slotIndex < OUTPUT_END) {
+                if (!this.insertItem(stack, INVENTORY_START, INVENTORY_END, false)) {
+                    return ItemStack.EMPTY;
+                }
             }
 
-            if (itemStack2.isEmpty()) {
-                slot2.setStack(ItemStack.EMPTY);
+            if (stack.isEmpty()) {
+                slot.setStack(ItemStack.EMPTY);
             }
 
-            slot2.markDirty();
-            if (itemStack2.getCount() == itemStack.getCount()) {
-                return ItemStack.EMPTY;
-            }
-
-            slot2.onTakeItem(player, itemStack2);
+            slot.markDirty();
+            slot.onTakeItem(player, stack);
             this.sendContentUpdates();
         }
 
-        return itemStack;
+        return result;
     }
 
     @Override
