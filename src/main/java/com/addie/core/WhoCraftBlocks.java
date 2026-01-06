@@ -1,5 +1,6 @@
 package com.addie.core;
 
+import com.addie.core.blocks.CircleRoundelDoorBlock;
 import com.addie.core.blocks.RoundelBlock;
 import com.addie.core.blocks.SpaceTimeFabricatorBlock;
 import dev.amble.lib.block.ABlockSettings;
@@ -31,5 +32,12 @@ public class WhoCraftBlocks extends BlockContainer {
     public static final Block CIRCLE_ROUNDEL_ALT = new RoundelBlock(ABlockSettings.create()
             .itemSettings(new AItemSettings().group(WhoCraftItemGroups.DECOR)).requiresTool()
             .strength(0.5F, 1.0F).pistonBehavior(PistonBehavior.IGNORE).sounds(BlockSoundGroup.SHROOMLIGHT).nonOpaque());
+
+        // Roundel Doors
+        @PickaxeMineable(tool = PickaxeMineable.Tool.IRON)
+        @NoEnglish
+        public static final Block CIRCLE_ROUNDEL_DOOR_BLOCK = new CircleRoundelDoorBlock(ABlockSettings.create()
+                .itemSettings(new AItemSettings().group(WhoCraftItemGroups.DECOR)).requiresTool()
+                .strength(0.5F, 1.0F).pistonBehavior(PistonBehavior.IGNORE).sounds(BlockSoundGroup.SHROOMLIGHT).nonOpaque());
 
 }

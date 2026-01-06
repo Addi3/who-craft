@@ -2,8 +2,10 @@ package com.addie;
 
 import com.addie.clientscreens.BetaText;
 import com.addie.clientscreens.SpaceTimeFabricatorScreen;
+import com.addie.core.WhoCraftBlockEntityTypes;
 import com.addie.core.WhoCraftItems;
 import com.addie.core.WhoCraftBlocks;
+import com.addie.renderers.decor.CircleRoundelDoorRenderer;
 import com.addie.screen.WhoCraftScreens;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
@@ -13,6 +15,7 @@ import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 import net.minecraft.util.Identifier;
 
 import static com.addie.WhoCraft.id;
@@ -37,10 +40,15 @@ public class WhoCraftClient implements ClientModInitializer {
 		ScreenRegistry.register(WhoCraftScreens.SPACE_TIME_FABRICATOR, SpaceTimeFabricatorScreen::new);
 		BlockRenderLayerMapRegister();
 		resourcepackRegister();
+		blockEntityRendererRegister();
 
 		BetaText.register();
 	}
 
+	public static void blockEntityRendererRegister() {
+
+		BlockEntityRendererFactories.register(WhoCraftBlockEntityTypes.CIRCLE_ROUNDEL_DOOR_BLOCK_ENTITY_TYPE, CircleRoundelDoorRenderer::new);
+	}
 	public static void BlockRenderLayerMapRegister() {
 		BlockRenderLayerMap.INSTANCE.putBlock(WhoCraftBlocks.CIRCLE_ROUNDEL, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(WhoCraftBlocks.CIRCLE_ROUNDEL_ALT, RenderLayer.getCutout());

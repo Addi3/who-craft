@@ -10,6 +10,10 @@ public class WhoCraftSounds {
 
     public static final SoundEvent SPACE_AND_TIME = register("ambience/space_and_time");
 
+    public static final SoundEvent MAIN_THEME = register("main_theme");
+
+    public static final SoundEvent ROUNDEL_DOOR = register("tardis/roundel_door");
+
 
 
 
