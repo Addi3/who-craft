@@ -12,12 +12,14 @@ import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RotationAxis;
 
 public class CircleRoundelDoorRenderer<T extends CircleRoundelDoorBlockEntity> implements BlockEntityRenderer<T> {
 
     public static final Identifier DOOR_TEXTURE = new Identifier(
             WhoCraft.MOD_ID, "textures/blockentities/decor/circle_roundel_door.png");
+
     public static final Identifier EMISSIVE_DOOR_TEXTURE = new Identifier(
             WhoCraft.MOD_ID, "textures/blockentities/decor/circle_roundel_door_emission.png");
 
@@ -36,8 +38,13 @@ public class CircleRoundelDoorRenderer<T extends CircleRoundelDoorBlockEntity> i
             return;
         }
 
-        Direction direction = blockState.get(CircleRoundelDoorBlock.FACING);
+        float progress = entity.getProgress(tickDelta);
+        roundeldoorModel.L.yaw = (float) Math.toRadians(145 * progress);
+        roundeldoorModel.R.yaw = (float) Math.toRadians(-145 * progress);
 
+
+
+        Direction direction = blockState.get(CircleRoundelDoorBlock.FACING);
 
         float rotationDegrees = switch (direction) {
             case NORTH -> 180f;
@@ -55,17 +62,30 @@ public class CircleRoundelDoorRenderer<T extends CircleRoundelDoorBlockEntity> i
         float scale = entity.getScale();
         matrices.scale(scale, scale, scale);
 
-
-        this.roundeldoorModel.render(matrices,
+        roundeldoorModel.render(
+                matrices,
                 vertexConsumers.getBuffer(RenderLayer.getEntityTranslucent(DOOR_TEXTURE)),
-                light, overlay, 1.0F, 1.0F, 1.0F, 1.0F);
+                light,
+                overlay,
+                1.0F,
+                1.0F,
+                1.0F,
+                1.0F
+        );
 
-
-        this.roundeldoorModel.render(matrices,
+        roundeldoorModel.render(
+                matrices,
                 vertexConsumers.getBuffer(RenderLayer.getEntityTranslucentEmissive(EMISSIVE_DOOR_TEXTURE)),
-                0xF000F00, overlay, 1.0F, 1.0F, 1.0F, 1.0F);
+                0xF000F00,
+                overlay,
+                1.0F,
+                1.0F,
+                1.0F,
+                1.0F
+        );
 
         matrices.pop();
     }
-}
 
+
+}

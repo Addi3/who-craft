@@ -15,11 +15,6 @@ public class WhoCraftSounds {
     public static final SoundEvent ROUNDEL_DOOR = register("tardis/roundel_door");
 
 
-
-
-
-
-
     // Register a SoundEvent
     private static SoundEvent register(String name) {
         Identifier id = WhoCraft.id(name);

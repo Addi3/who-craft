@@ -1,0 +1,11 @@
+{
+  "type": "who-craft:fabrication",
+  "top": {
+    "item": "who-craft:circle_roundel"
+  },
+  "bottom": {
+    "item": "minecraft:iron_door"
+  },
+  "result": "who-craft:circle_roundel_door_block",
+  "count": 1
+}

@@ -1,0 +1,39 @@
+{
+  "parent": "minecraft:who-craft/root",
+  "criteria": {
+    "obtain_roundel": {
+      "conditions": {
+        "items": [
+          {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "tag": "who-craft:roundels"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "achievement.whocraft.description.obtain_roundel"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "item": "who-craft:circle_roundel"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "achievement.whocraft.title.obtain_roundel"
+    }
+  },
+  "requirements": [
+    [
+      "obtain_roundel"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -4,6 +4,7 @@ import com.addie.core.WhoCraftItemGroups;
 import com.addie.core.WhoCraftItems;
 import com.addie.core.WhoCraftBlocks;
 import com.addie.datagen.providers.WhoCraftAchievementProvider;
+import com.addie.datagen.providers.WhoCraftBlockTagProvider;
 import com.addie.datagen.providers.WhoCraftItemTagProvider;
 import com.addie.datagen.providers.WhoCraftModelGen;
 import com.lib.datagenproviders.CallistoLibRecipeProvider;
@@ -15,14 +16,9 @@ import dev.amble.lib.datagen.tag.AmbleBlockTagProvider;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.block.Blocks;
-import net.minecraft.data.server.recipe.RecipeJsonProvider;
-import net.minecraft.data.server.recipe.RecipeProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
-import net.minecraft.registry.tag.ItemTags;
-
-import java.util.function.Consumer;
 
 import static net.minecraft.data.server.recipe.RecipeProvider.conditionsFromItem;
 import static net.minecraft.data.server.recipe.RecipeProvider.hasItem;
@@ -35,11 +31,17 @@ public class WhoCraftDataGenerator implements DataGeneratorEntrypoint {
 		generateachivement(pack);
 		genLang(pack);
 		genLoot(pack);
-		genTags(pack);
+		//genTags(pack);
 		generateSoundData(pack);
 		generateRecipes(pack);
 		generateItemTags(pack);
+		generateBlockTags(pack);
 		genModels(pack);
+	}
+
+
+	public void generateBlockTags(FabricDataGenerator.Pack pack) {
+		pack.addProvider(WhoCraftBlockTagProvider::new);
 	}
 
 	private void genModels(FabricDataGenerator.Pack pack) {
@@ -60,9 +62,9 @@ public class WhoCraftDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider((((output, registriesFuture) -> new AmbleSoundProvider(output))));
 	}
 
-	private void genTags(FabricDataGenerator.Pack pack) {
-		pack.addProvider((((output, registriesFuture) -> new AmbleBlockTagProvider(output, registriesFuture).withBlocks(WhoCraftBlocks.class))));
-	}
+//	private void genTags(FabricDataGenerator.Pack pack) {
+//		pack.addProvider((((output, registriesFuture) -> new AmbleBlockTagProvider(output, registriesFuture).withBlocks(WhoCraftBlocks.class))));
+//	}
 	public void generateItemTags(FabricDataGenerator.Pack pack) {
 		pack.addProvider(WhoCraftItemTagProvider::new);
 	}
@@ -164,6 +166,7 @@ public class WhoCraftDataGenerator implements DataGeneratorEntrypoint {
 			provider.addTranslation(WhoCraftBlocks.SPACE_TIME_FABRICATOR,"Space-Time Fabricator");
 			provider.addTranslation(WhoCraftBlocks.CIRCLE_ROUNDEL,"Roundel (Circle)");
 			provider.addTranslation(WhoCraftBlocks.CIRCLE_ROUNDEL_ALT,"Roundel (Circle Alt)");
+			provider.addTranslation(WhoCraftBlocks.CIRCLE_ROUNDEL_DOOR_BLOCK,"Roundel Door (Circle)");
 
 			//Achievements
 			provider.addTranslation("achievement.whocraft.title.root","Who-Craft");
@@ -177,6 +180,12 @@ public class WhoCraftDataGenerator implements DataGeneratorEntrypoint {
 
 			provider.addTranslation("achievement.whocraft.title.collect_all_keys","Collect them all!");
 			provider.addTranslation("achievement.whocraft.description.collect_all_keys","Obtail all Key variants");
+
+			provider.addTranslation("achievement.whocraft.title.obtain_roundel","What are the round things?!");
+			provider.addTranslation("achievement.whocraft.description.obtain_roundel","No seriously why are they?");
+
+			provider.addTranslation("achievement.whocraft.title.obtain_roundel_door","What are the round things- door edition?!");
+			provider.addTranslation("achievement.whocraft.description.obtain_roundel_door","Why are they on doors now?");
 
 			return provider;
 		})));

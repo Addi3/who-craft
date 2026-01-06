@@ -1,6 +1,7 @@
 package com.addie.datagen.providers;
 
 import com.addie.WhoCraft;
+import com.addie.core.WhoCraftBlocks;
 import com.addie.core.WhoCraftItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
