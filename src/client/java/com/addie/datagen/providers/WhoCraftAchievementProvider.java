@@ -32,6 +32,7 @@ public class WhoCraftAchievementProvider extends FabricAdvancementProvider {
                         Text.translatable("achievement.whocraft.description.root"),
                         new Identifier("who-craft","textures/overlay/background.png"),
                         AdvancementFrame.GOAL, true, true, false)
+                // REPLACE STONE!!!
                 .criterion("root", InventoryChangedCriterion.Conditions.items(Blocks.STONE))
                 .build(consumer, WhoCraft.MOD_ID + "/root");
 
