@@ -1,0 +1,11 @@
+{
+  "type": "who-craft:fabrication",
+  "top": {
+    "item": "who-craft:roundel_mould"
+  },
+  "bottom": {
+    "item": "who-craft:roundel_pattern"
+  },
+  "result": "who-craft:circle_roundel",
+  "count": 4
+}

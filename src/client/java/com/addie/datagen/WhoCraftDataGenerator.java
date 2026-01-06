@@ -15,10 +15,14 @@ import dev.amble.lib.datagen.tag.AmbleBlockTagProvider;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.block.Blocks;
+import net.minecraft.data.server.recipe.RecipeJsonProvider;
+import net.minecraft.data.server.recipe.RecipeProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.tag.ItemTags;
+
+import java.util.function.Consumer;
 
 import static net.minecraft.data.server.recipe.RecipeProvider.conditionsFromItem;
 import static net.minecraft.data.server.recipe.RecipeProvider.hasItem;
@@ -94,6 +98,19 @@ public class WhoCraftDataGenerator implements DataGeneratorEntrypoint {
 					.criterion(hasItem(Items.IRON_NUGGET), conditionsFromItem(Items.IRON_NUGGET))
 					.criterion(hasItem(Items.ENDER_EYE), conditionsFromItem(Items.ENDER_EYE)));
 
+			;provider.addShapedRecipe(ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, WhoCraftItems.ROUNDEL_PATTERN, 1)
+					.pattern(" PM")
+					.input('P', Items.PAPER)
+					.input('M', WhoCraftItems.ROUNDEL_MOULD)
+					.criterion(hasItem(Items.PAPER), conditionsFromItem(Items.PAPER))
+					.criterion(hasItem(WhoCraftItems.ROUNDEL_MOULD), conditionsFromItem(WhoCraftItems.ROUNDEL_MOULD)));
+
+			;provider.addShapedRecipe(ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, WhoCraftItems.ROUNDEL_MOULD, 2)
+					.pattern(" C ")
+					.pattern("CCC")
+					.pattern(" C ")
+					.input('C', Items.CLAY_BALL)
+					.criterion(hasItem(Items.CLAY_BALL), conditionsFromItem(Items.CLAY_BALL)));
 
 
 			return provider;
