@@ -58,6 +58,7 @@ public class WhoCraftClient implements ClientModInitializer {
 
 				{
 					ResourceManagerHelper.registerBuiltinResourcePack(id("whocraftmenu"), modContainer, ResourcePackActivationType.DEFAULT_ENABLED);
+					ResourceManagerHelper.registerBuiltinResourcePack(id("roundelemissions"), modContainer, ResourcePackActivationType.DEFAULT_ENABLED);
 				});
 	}
 }
