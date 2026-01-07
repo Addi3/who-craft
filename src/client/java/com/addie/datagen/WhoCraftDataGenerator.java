@@ -17,6 +17,7 @@ import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
+import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 
@@ -114,6 +115,22 @@ public class WhoCraftDataGenerator implements DataGeneratorEntrypoint {
 					.input('C', Items.CLAY_BALL)
 					.criterion(hasItem(Items.CLAY_BALL), conditionsFromItem(Items.CLAY_BALL)));
 
+			provider.addShapedRecipe(
+					ShapedRecipeJsonBuilder.create(RecipeCategory.DECORATIONS, WhoCraftBlocks.SEAL_BLOCK , 1)
+							.group("seal")
+							.pattern("NIN")
+							.pattern("I I")
+							.pattern("NIN")
+							.input('I', Items.GOLD_INGOT)
+							.input('N', Items.GOLD_NUGGET)
+							.criterion(hasItem(Items.GOLD_INGOT), conditionsFromItem(Items.GOLD_INGOT))
+							.criterion(hasItem(Items.GOLD_NUGGET), conditionsFromItem(Items.GOLD_NUGGET)));
+
+			provider.addShapelessRecipe(ShapelessRecipeJsonBuilder
+					.create(RecipeCategory.DECORATIONS, WhoCraftBlocks.SEAL_SMALL_BLOCK, 1)
+					.group("seal")
+					.input(WhoCraftBlocks.SEAL_BLOCK)
+					.criterion(hasItem(WhoCraftBlocks.SEAL_BLOCK), conditionsFromItem(WhoCraftBlocks.SEAL_BLOCK)));
 
 			return provider;
 
@@ -137,6 +154,7 @@ public class WhoCraftDataGenerator implements DataGeneratorEntrypoint {
 			provider.addTranslation("item.whocraft.key.iron","Iron");
 			provider.addTranslation("item.whocraft.key.netherite","Netherite");
 			provider.addTranslation("block.roundel.description","Can Be Dyed!");
+			provider.addTranslation("block.tooltip.seal", "If you SHIFT when placing this, it will become a CENTERED version!!");
 
 				//ItemGroup
 			provider.addTranslation(WhoCraftItemGroups.MAIN,"Who-Craft");
@@ -167,6 +185,8 @@ public class WhoCraftDataGenerator implements DataGeneratorEntrypoint {
 			provider.addTranslation(WhoCraftBlocks.CIRCLE_ROUNDEL,"Roundel (Circle)");
 			provider.addTranslation(WhoCraftBlocks.CIRCLE_ROUNDEL_ALT,"Roundel (Circle Alt)");
 			provider.addTranslation(WhoCraftBlocks.CIRCLE_ROUNDEL_DOOR_BLOCK,"Roundel Door (Circle)");
+			provider.addTranslation(WhoCraftBlocks.SEAL_BLOCK, "Seal Of Rassilon");
+			provider.addTranslation(WhoCraftBlocks.SEAL_SMALL_BLOCK, "Seal Of Rassilon (Small)");
 
 			//Achievements
 			provider.addTranslation("achievement.whocraft.title.root","Who-Craft");
@@ -183,9 +203,6 @@ public class WhoCraftDataGenerator implements DataGeneratorEntrypoint {
 
 			provider.addTranslation("achievement.whocraft.title.obtain_roundel","What are the round things?!");
 			provider.addTranslation("achievement.whocraft.description.obtain_roundel","No seriously why are they?");
-
-			provider.addTranslation("achievement.whocraft.title.obtain_roundel_door","What are the round things- door edition?!");
-			provider.addTranslation("achievement.whocraft.description.obtain_roundel_door","Why are they on doors now?");
 
 			return provider;
 		})));

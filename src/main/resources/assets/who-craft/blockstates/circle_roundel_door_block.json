@@ -1,6 +1,13 @@
-
 {
 	"variants": {
-		"": { "model": "who-craft:block/circle_roundel_door" }
+		"facing=north,open=false": { "model": "who-craft:block/circle_roundel_door_block"},
+		"facing=east,open=false":  { "model": "who-craft:block/circle_roundel_door_block"},
+		"facing=south,open=false": { "model": "who-craft:block/circle_roundel_door_block"},
+		"facing=west,open=false":  { "model": "who-craft:block/circle_roundel_door_block"},
+
+		"facing=north,open=true": { "model": "who-craft:block/circle_roundel_door_block"},
+		"facing=east,open=true":  { "model": "who-craft:block/circle_roundel_door_block"},
+		"facing=south,open=true": { "model": "who-craft:block/circle_roundel_door_block"},
+		"facing=west,open=true":  { "model": "who-craft:block/circle_roundel_door_block"}
 	}
 }

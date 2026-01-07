@@ -53,6 +53,8 @@ public class WhoCraftClient implements ClientModInitializer {
 		BlockRenderLayerMap.INSTANCE.putBlock(WhoCraftBlocks.CIRCLE_ROUNDEL, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(WhoCraftBlocks.CIRCLE_ROUNDEL_ALT, RenderLayer.getCutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(WhoCraftBlocks.SPACE_TIME_FABRICATOR, RenderLayer.getCutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(WhoCraftBlocks.SEAL_BLOCK, RenderLayer.getCutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(WhoCraftBlocks.SEAL_SMALL_BLOCK, RenderLayer.getCutout());
 	}
 
 	public static void resourcepackRegister() {

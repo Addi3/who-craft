@@ -5,10 +5,7 @@
       "conditions": {
         "items": [
           {
-            "condition": "minecraft:match_tool",
-            "predicate": {
-              "tag": "who-craft:roundels"
-            }
+            "tag": "who-craft:roundels"
           }
         ]
       },

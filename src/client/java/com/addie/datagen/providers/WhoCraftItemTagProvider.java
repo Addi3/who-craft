@@ -36,6 +36,10 @@ public class WhoCraftItemTagProvider extends FabricTagProvider<Item> {
                 .add(WhoCraftItems.YALE_GOLD_KEY)
                 .add(WhoCraftItems.YALE_NETHERITE_KEY);
 
+        getOrCreateTagBuilder(WhoCraftTags.Items.ROUNDELS)
+                .add(WhoCraftBlocks.CIRCLE_ROUNDEL.asItem())
+                .add(WhoCraftBlocks.CIRCLE_ROUNDEL_ALT.asItem());
+
    }
 
     public static class WhoCraftTags {
@@ -43,6 +47,10 @@ public class WhoCraftItemTagProvider extends FabricTagProvider<Item> {
             public static final TagKey<Item> KEYCHAIN_ITEMS = TagKey.of(
                     RegistryKeys.ITEM,
                     id("keychain_items")
+            );
+            public static final TagKey<Item> ROUNDELS = TagKey.of(
+                    RegistryKeys.ITEM,
+                    id("roundels")
             );
 
         }
