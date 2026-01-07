@@ -127,7 +127,7 @@ public class WhoCraftDataGenerator implements DataGeneratorEntrypoint {
 							.criterion(hasItem(Items.GOLD_NUGGET), conditionsFromItem(Items.GOLD_NUGGET)));
 
 			provider.addShapelessRecipe(ShapelessRecipeJsonBuilder
-					.create(RecipeCategory.DECORATIONS, WhoCraftBlocks.SEAL_SMALL_BLOCK, 1)
+					.create(RecipeCategory.DECORATIONS, WhoCraftBlocks.SEAL_SMALL_BLOCK, 2)
 					.group("seal")
 					.input(WhoCraftBlocks.SEAL_BLOCK)
 					.criterion(hasItem(WhoCraftBlocks.SEAL_BLOCK), conditionsFromItem(WhoCraftBlocks.SEAL_BLOCK)));
